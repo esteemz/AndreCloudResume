@@ -1,0 +1,122 @@
+* {
+  max-width: 700px;
+  margin: auto;
+}
+
+html { 
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+	
+}
+
+/*body {
+    min-width: 500px;
+}*/
+
+div {
+  border-radius: 7px;
+}
+
+#header {
+	height: 40px;
+	width: 100%;
+	background-color: #ADD8E6;
+	position: fixed;
+	z-index: 1;
+}
+
+#title {
+  margin-left: 3%;
+}
+
+#footer {
+	height: 50px;
+	width: 100%;
+	background-color: #ADD8E6;
+	position: relative;
+}
+
+.resume {
+	text-align: center;
+	border: 3px solid aqua;
+}
+
+.left {
+	height: 700px;
+	width: 45px;
+	background-color: #ADD8E6;
+	float: left;
+	position: static;
+}
+
+.right {
+	height: 700px;
+	width: 45px;
+	background-color: #ADD8E6;
+	float: right;
+	position: static;
+}
+
+.stuff {
+  display: inline-block;
+  margin-top: 6px;
+  margin-left: 55px;
+  width: 75%;
+  height: 700px;
+}
+
+p {
+	font-family: 'Cormorant Garamond';
+	position: relative;
+	display: inline;
+}
+
+li {
+	font-family: 'Cormorant Garamond';
+	position: relative;
+	display: inherit;
+	background-color: aqua;
+}
+
+.head {
+  font-size: 20px;
+  font-weight: bold;
+	background-color: aqua;
+}
+
+#name {
+	font-family: Sacramento;
+	float: left;
+	margin-top: 10px;
+	margin-right: 4%;
+	margin-left: 20px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
+@media only screen and (max-width: 430px) {
+  .left,
+  .right {
+    display: none;
+  }
+  .stuff {
+    width: 100%;
+    margin-left: 10px;
+  }
+}
