@@ -12,13 +12,14 @@
         const API_URL = 'https://7v3pio0fa5.execute-api.us-east-2.amazonaws.com/Counter';
 
         function updateCounter() {
-            const pageName = 'website';
+            const pageName = 'websitecount';
             const url = `${API_URL}?pageName=${encodeURIComponent(pageName)}`;
 
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('counter').textContent = data.counter;
+                    const counter = data.body ? JSON.parse(data.body).counter : 0;
+                    document.getElementById('counter').textContent = counter;
                 })
                 .catch(error => {
                     console.error('Error updating the counter:', error);
