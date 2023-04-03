@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Counter</title>
+</head>
+<body>
+    <h1>Counter: <span id="counter">Loading...</span></h1>
+
+    <script>
+        const API_URL = 'https://7v3pio0fa5.execute-api.us-east-2.amazonaws.com/Counter';
+
+        function updateCounter() {
+            const pageName = 'website';
+            const url = `${API_URL}?pageName=${encodeURIComponent(pageName)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('counter').textContent = data.counter;
+                })
+                .catch(error => {
+                    console.error('Error updating the counter:', error);
+                });
+        }
+
+        // Update the counter on page load
+        updateCounter();
+    </script>
+    <h1>About this counter</h1>
+    <h2>Javascript on this page invokes a lambda function which updates a DynamoDB table and grabs the updated value to display here.</h2>
+    <h2>Lambda function was written in Python</h2>
+</body>
+</html>
