@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Web App</title>
+    <link rel="icon" href="/img/aws.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
+    <!-- main style -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="https://malsup.github.io/jquery.form.js"></script> 
+ 
+
+    <style>
+        body {
+            background-color: #ADD8E6; /* Light blue background */
+        }
+        .centered-content {
+            text-align: center;
+            margin-top: 150px;
+        }
+    </style>
+
+</head>
+
+    <!-- 037 -->
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+
+            <div class="preloader" aria-busy="true" aria-label="Loading, please wait." role="progressbar">
+            </div>
+
+        </div>
+    </div>
+    <!-- ./Preloader -->
+
+<body>
+
+    
+    <!-- header -->
+    <header class="navbar-fixed-top">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weatherapp.html">Weather App</a></li>
+                <li><a href="https://github.com/andrepardini/weatherapp">Github Repo</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+
+
+
+        <div class="centered-content">
+            <h2>Weather App Project Summary</h2>
+
+
+        <br>First we create a lambda function that can use the OpenWeatherMap api
+        <br>Check out the github repo for the code!
+        <br>We need an axios layer for our AWS Lambda code to run.
+        <br>
+        <img src="img/1.JPG"></img>
+        <br>
+        <br>Opening up AWS Cloudshell, we can run the following commands to get an axios package to upload
+        <br>mkdir nodejs
+        <br>cd nodejs
+        <br>npm i axios
+        <br>rm -rf package-lock.json
+        <br>cd ..
+        <br>zip -r axios.zip nodejs
+        <br>
+        <img src="img/2cloudshell.JPG"></img>
+        <br>
+        <br>We can then download the file using cloudshell
+        <br>Here we see the axios.zip file uploaded
+        <br>
+        <br>
+        <img src="img/3.JPG"></img>
+        <br>
+        <br>We now copy the ARN number and add the layer to our Weather app Lambda function
+        <br>
+        <img src="img/4.JPG"></img>
+        <br>
+        <img src="img/5.JPG"></img>
+        <br>
+        <br>Test Successful.  Code runs.
+        <br>Using the following query to test
+        <br><code>{
+            "queryStringParameters": {
+              "city": "Denver"
+            }
+          }</code>
+        <br>
+        <img src="img/7testresults.JPG"></img>
+        <br>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--  plugins  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+
+    <!--  main script  -->
+    <script src="js/custom.js"></script>
+
+    </body>
+</html>

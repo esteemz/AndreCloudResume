@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather Web App</title>
+    <link rel="icon" href="/img/aws.png" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/aos.css" rel="stylesheet">
+    <!-- main style -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+    <script src="https://malsup.github.io/jquery.form.js"></script> 
+ 
+
+    <style>
+        body {
+            background-color: #ADD8E6; /* Light blue background */
+        }
+        .centered-content {
+            text-align: center;
+            margin-top: 150px;
+        }
+    </style>
+
+</head>
+
+    <!-- 037 -->
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+
+            <div class="preloader" aria-busy="true" aria-label="Loading, please wait." role="progressbar">
+            </div>
+
+        </div>
+    </div>
+    <!-- ./Preloader -->
+
+<body>
+
+    
+    <!-- header -->
+    <header class="navbar-fixed-top">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weatherappdetails.html">Project Details</a></li>
+                <li><a href="https://github.com/andrepardini/weatherapp">Github Repo</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./header -->
+
+
+
+
+        <div class="centered-content">
+            <h2>Weather Information</h2>
+            <form id="weatherForm">
+                <label for="city">Enter City:</label>
+                <input type="text" id="city" name="city" required>
+                <button type="submit">Get Weather</button>
+            </form>
+            <div id="weatherResult"></div>
+    
+        <script>
+            document.getElementById('weatherForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const city = document.getElementById('city').value;
+                const apiUrl = 'https://opyn81nfwj.execute-api.us-west-2.amazonaws.com/weatherapp?city=' + city;
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Display the weather data
+                        document.getElementById('weatherResult').innerHTML = `
+                            <h2>Weather in ${city}</h2>
+                            <p><strong>Temperature:</strong> ${data.main.temp} °F</p>
+                            <p><strong>Weather:</strong> ${data.weather[0].main}</p>
+                            <p><strong>Description:</strong> ${data.weather[0].description}</p>
+                        `;
+                    })
+                    .catch(error => {
+                        console.error('There has been a problem with your fetch operation:', error);
+                        document.getElementById('weatherResult').innerHTML = `<p>Error: ${error.message}</p>`;
+                    });
+            });
+        </script>
+
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!--  plugins  -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+
+    <!--  main script  -->
+    <script src="js/custom.js"></script>
+
+    </body>
+</html>
